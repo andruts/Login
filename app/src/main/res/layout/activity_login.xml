@@ -8,6 +8,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:isScrollContainer="true"
     android:background="@drawable/radialred"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
     tools:context="com.example.login.LoginActivity">
 
 
@@ -25,8 +27,6 @@
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:isScrollContainer="true">
-
-
 
         <ScrollView
             android:id="@+id/login_form"
@@ -57,17 +57,18 @@
                     android:layout_margin="16dp"
                     android:background="@drawable/rounded_red_border"
                     android:backgroundTint="@android:color/white"
-                    app:hintTextAppearance="@style/MyAppearance">
+                    app:hintTextAppearance="@style/Hint">
 
                     <AutoCompleteTextView
-                        android:id="@+id/email"
+                        android:id="@+id/username"
                         android:nextFocusForward="@+id/password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:color/transparent"
-                        android:gravity="center"
                         android:hint="Usuario"
-                        android:inputType="textEmailAddress"
+                        android:textCursorDrawable="@drawable/textcursor"
+                        android:gravity="center"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:imeOptions="actionNext"
                         android:singleLine="true"
@@ -93,7 +94,7 @@
                     android:background="@drawable/rounded_red_border"
                     android:backgroundTint="@android:color/white"
                     android:imeOptions="actionDone"
-                    app:hintTextAppearance="@style/MyAppearance"
+                    app:hintTextAppearance="@style/Hint"
                     >
 
                     <EditText
@@ -103,8 +104,9 @@
                         android:background="@android:color/transparent"
                         android:gravity="center"
                         android:hint="Contraseña"
+                        android:textCursorDrawable="@drawable/textcursor"
                         android:textSize="24dp"
-                        android:imeOptions="actionSend"
+                        android:imeOptions="actionPrevious"
                         android:inputType="textPassword"
                         android:maxLines="1"
                         android:singleLine="true"
@@ -119,10 +121,10 @@
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_alignParentBottom="true"
-            android:background="#336E2B28"
+            android:background="#001049"
             android:textColor="#FFFFFF"
             android:textAllCaps="false"
-            android:textSize="24dp"
+            android:textSize="20dp"
             android:visibility="gone"
             android:text="Iniciar sesión"
             />
