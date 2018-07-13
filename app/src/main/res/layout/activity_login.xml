@@ -9,129 +9,101 @@
     android:isScrollContainer="true"
     android:background="@drawable/radialred"
     android:focusableInTouchMode="true"
-    android:focusable="true">
+    android:focusable="true"
     tools:context="com.example.login.LoginActivity">
 
+   <ImageView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:src="@drawable/logo_donde_full"/>
 
-    <!-- Login progress -->
-    <ImageView
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/usrLabel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo_donde_full"
-
+        android:text="Ingresa tu usuario"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:textColor="#FFFFFF"
         />
 
 
-    <RelativeLayout
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:isScrollContainer="true">
-
-        <ScrollView
-            android:id="@+id/login_form"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-
-            <LinearLayout
-                android:id="@+id/email_login_form"
-                android:layout_width="match_parent"
-                android:layout_height="128dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/usrLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ingresa tu usuario"
-                    android:textAlignment="center"
-                    android:textSize="32dp"
-                    android:textColor="#FFFFFF"
-                    android:visibility="gone"/>
-
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@drawable/rounded_red_border"
-                    android:backgroundTint="@android:color/white"
-                    app:hintTextAppearance="@style/Hint">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/username"
-                        android:nextFocusForward="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/transparent"
-                        android:hint="Usuario"
-                        android:textCursorDrawable="@drawable/textcursor"
-                        android:gravity="center"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:imeOptions="actionNext"
-                        android:singleLine="true"
-                        android:textColor="#000000"
-                        android:textSize="24dp" />
-
-                </android.support.design.widget.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/passwordLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ingresa tu contraseña"
-                    android:textAlignment="center"
-                    android:textSize="32dp"
-                    android:textColor="#FFFFFF"
-                    android:visibility="gone"/>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:background="@drawable/rounded_red_border"
-                    android:backgroundTint="@android:color/white"
-                    android:imeOptions="actionDone"
-                    app:hintTextAppearance="@style/Hint"
-                    >
-
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/transparent"
-                        android:gravity="center"
-                        android:hint="Contraseña"
-                        android:textCursorDrawable="@drawable/textcursor"
-                        android:textSize="24dp"
-                        android:imeOptions="actionPrevious"
-                        android:inputType="textPassword"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:textColor="#000000" />
-
-                </android.support.design.widget.TextInputLayout>
-            </LinearLayout>
-        </ScrollView>
-
-        <Button
-            android:id="@+id/button_next"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorPrimaryLight"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+        <EditText
+            android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:layout_alignParentBottom="true"
-            android:background="#001049"
-            android:textColor="#FFFFFF"
-            android:textAllCaps="false"
-            android:textSize="20dp"
-            android:visibility="gone"
-            android:text="Iniciar sesión"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:inputType="textEmailAddress"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:textColor="@android:color/white"
+            android:hint="Usuario"
+            android:maxLines="1"
+            android:imeOptions="actionNext"
+
             />
+    </android.support.design.widget.TextInputLayout>
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/passwordLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresa tu contraseña"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/passwdLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingresa tu contraseña"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:textColor="#FFFFFF"
+        android:visibility="gone"
+        />
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorPrimaryLight"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout"
+        >
+        <EditText
+            android:id="@+id/password"
+            android:inputType="textPassword"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:textColor="@android:color/white"
+            android:hint="Contraseña"
+            android:visibility="gone"
+            android:maxLines="1"
+            android:imeOptions="actionPrevious"
+            />
+    </android.support.design.widget.TextInputLayout>
 
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="#001049"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:visibility="gone"
+        android:text="Iniciar sesión" />
 
 </LinearLayout>
+

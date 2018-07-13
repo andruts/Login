@@ -24,8 +24,9 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity {
 
     // UI references.
-    private AutoCompleteTextView mUsernameView;
+    private EditText mUsernameView;
     private EditText mPasswordView;
+    private TextView textView;
     private Button loginButton;
 
 
@@ -35,24 +36,43 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mUsernameView = findViewById(R.id.username);
+        mPasswordView = findViewById(R.id.password);
 
 
         mUsernameView.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                textView = findViewById(R.id.usrLabel);
+                textView.setVisibility(View.GONE);
             }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+
                 String email = mUsernameView.getText().toString();
                 String password = mPasswordView.getText().toString();
                 displayLoginButton(verifyInputs(email, password));
+            }
+        });
+
+        mUsernameView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
+                if (id == EditorInfo.IME_ACTION_NEXT) {
+                    mPasswordView.setVisibility(View.VISIBLE);
+                    textView = findViewById(R.id.passwdLabel);
+                    textView.setVisibility(View.VISIBLE);
+                    mPasswordView.requestFocus();
+
+                    return true;
+                }
+                return false;
             }
         });
 
@@ -60,7 +80,8 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                textView = findViewById(R.id.passwdLabel);
+                textView.setVisibility(View.GONE);
             }
 
             @Override
@@ -70,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                System.out.println("Prueba uno exitosa");
                 String email = mUsernameView.getText().toString();
                 String password = mPasswordView.getText().toString();
                 displayLoginButton(verifyInputs(email, password));
@@ -78,32 +98,10 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        mUsernameView.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (view.hasFocus()){
-                    findViewById(R.id.usrLabel).setVisibility(View.VISIBLE);
-                } else {
-                    findViewById(R.id.usrLabel).setVisibility(View.GONE);
-                }
-            }
-        });
 
 
-        mPasswordView.setOnFocusChangeListener(new View.OnFocusChangeListener(){
 
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (view.hasFocus()){
-                    findViewById(R.id.passwordLabel).setVisibility(View.VISIBLE);
-                } else {
-                    findViewById(R.id.passwordLabel).setVisibility(View.GONE);
-                }
-            }
-        });
-
-
-        loginButton = (Button) findViewById(R.id.button_next);
+   loginButton =  findViewById(R.id.login_button);
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void displayLoginButton(Boolean inputs) {
-        System.out.println("Llego al displayLoginButton");
         if(inputs){
             attemptLogin();
             loginButton.setVisibility(View.VISIBLE);
