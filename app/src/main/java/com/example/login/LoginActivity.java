@@ -15,8 +15,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.R;
+import com.example.settings.SettingsActivity;
+import android.content.Intent;
 
 /**
  * A login screen that offers login via username/password.
@@ -27,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameView;
     private EditText mPasswordView;
     private Button loginButton;
+    private ImageView imageView;
 
 
     @Override
@@ -37,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
         mPasswordView = (EditText) findViewById(R.id.password);
-
+        imageView = (ImageView) findViewById(R.id.logoView);
 
         mUsernameView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -102,6 +107,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent settingsActivity = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(settingsActivity);
+            }
+        });
 
         loginButton = (Button) findViewById(R.id.button_next);
         loginButton.setOnClickListener(new OnClickListener() {

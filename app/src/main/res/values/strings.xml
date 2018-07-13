@@ -13,4 +13,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_settings_activity">Configuración de conexión</string>
+    <string name="login_label">Servidor para el inicio de sesión</string>
+    <string name="login_text"></string>
+    <string name="waste_label">Servidor para mermas</string>
+    <string name="waste_text"></string>
+    <string name="app_label">Servidor para la App</string>
+    <string name="app_text"></string>
 </resources>

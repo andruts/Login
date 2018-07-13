@@ -15,6 +15,7 @@
 
     <!-- Login progress -->
     <ImageView
+        android:id="@+id/logoView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logo_donde_full"
